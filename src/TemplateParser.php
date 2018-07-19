@@ -40,12 +40,11 @@ class TemplateParser
      * @param \DomNamedNodeMap $attrs
      * @param \DomElement $node
      */
-	protected function processAttributes(DOMNamedNodeMap $attrs, DomElement $node)
+	protected function processAttributes(\DOMNamedNodeMap $attrs, \DomElement $node)
 	{
 		foreach($attrs as $attr) {
 
 			if (strpos($attr->name, static::SPECIAL_ATTRIBUTE_PREFIX) !== 0) continue;
-			// Processa as paradas do PHP aqui!
 			
             $name = substr($attr->name, strlen(static::SPECIAL_ATTRIBUTE_PREFIX));
             
@@ -66,7 +65,7 @@ class TemplateParser
      * 
      * 
      */
-	protected function recursiveNodeProcess(DomElement $nodes)
+	protected function recursiveNodeProcess(\DomElement $nodes)
 	{
 		
 		foreach ($nodes->childNodes as $node) {
@@ -79,9 +78,13 @@ class TemplateParser
     
 
     /**
+     * Transform bind expression in "echo" sintaxe 			
      * 
+     * @param \Domelement $node
+     * @param \DomAttr $attr
+     * @return void
      */
-	protected function parseAttributeBind(DomElement $node, DomAttr $attr)
+	protected function parseAttributeBind(\DomElement $node, \DomAttr $attr)
 	{
 		$node->removeAttribute(static::SPECIAL_ATTRIBUTE_PREFIX . 'bind');
 		$node->nodeValue = ''; // remove all childs!
@@ -91,7 +94,14 @@ class TemplateParser
 		
     }
     
-	protected function parseAttributeForeach(DomElement $node, DomAttr $attr)
+    /**
+     * Transform attribute expression in foreach syntax
+     * 
+     * @param \Domelement $node
+     * @param \DomAttr $attr
+     * @return void
+     */
+	protected function parseAttributeForeach(\DomElement $node, \DomAttr $attr)
 	{
         $dom = $this->getDomDocument();
         
