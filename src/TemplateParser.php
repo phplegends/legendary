@@ -1,5 +1,6 @@
 <?php
 
+namespace PHPLegends\Legendary;
 
 class TemplateParser
 {
