@@ -1,0 +1,25 @@
+{
+    "name": "phplegends/legendary",
+    "description": "provides a interface to use php with html attributes",
+    "type": "lib",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wallace maxters",
+            "email": "wallacemaxters@gmail.com"
+        }
+    ],
+    
+    "require": {
+        "phplegends/view" : "dev-master"
+    },
+
+    "autoload" : {
+        "psr-4": {
+            "PHPLegends\\Legendary\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    }
+}
