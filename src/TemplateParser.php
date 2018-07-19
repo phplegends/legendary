@@ -26,9 +26,11 @@ class TemplateParser
     }
     
     /**
+     * Gets the DomDocument with content template loaded
      * 
      * @return \DomDocument
      */
+
     public function getDomDocument()
 	{	
 		return $this->domDocument;
